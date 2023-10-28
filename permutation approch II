@@ -1,0 +1,34 @@
+import java.util.*;
+public class Main
+{
+        public  static void swap(int i,int j,int nums[]){
+            int t=nums[i];
+            nums[i]=nums[j];
+            nums[j]=t;
+        }
+        public static void permutation(int index ,int nums[],boolean fre[],List<List<Integer>>pi){
+        if(index==nums.length){
+            List<Integer>ds=new ArrayList<>();
+            for(int i=0;i<nums.length;i++){
+                ds.add(nums[i]);
+            }
+            pi.add(new ArrayList<>(ds));
+            return;
+        }
+        for(int i=index;i<nums.length;i++){
+            swap(i,index,nums);
+            permutation(index+1,nums,fre,pi);
+            swap(i,index,nums);
+        }
+        }
+
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		int a[]={1,2,3};
+		boolean fre[]=new boolean[a.length];
+		List<List<Integer>>pi=new ArrayList<>();
+	
+		permutation(0,a,fre,pi);
+		System.out.println(pi);
+	}
+}

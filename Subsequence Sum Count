@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+
+    public static void FindSubsequence(int a[], List<Integer> pi, int index, int n, int sum, int s1, int[] k) {
+        if (index >= n) {
+            if (s1 == sum) {
+                k[0]++;
+            }
+            return;
+        }
+
+        pi.add(a[index]);
+        s1 += a[index];
+        FindSubsequence(a, pi, index + 1, n, sum, s1, k);
+        pi.remove(pi.size() - 1);
+        s1 -= a[index];
+        FindSubsequence(a, pi, index + 1, n, sum, s1, k);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Integer> pi = new ArrayList<>();
+        int a[] = {1, 1, 1};
+        int sum = 2;
+        int[] k = {0};
+
+        FindSubsequence(a, pi, 0, a.length, sum, 0, k);
+        System.out.println(k[0]);
+    }
+}

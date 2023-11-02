@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Main {
+    public static int findSum(int a[], int sum, int tempsum, int i) {
+        if (sum == tempsum) {
+            return 1;
+        }
+        if (i >= a.length) {
+            return 0;
+        }
+        int l = findSum(a, sum, tempsum + a[i], i + 1);
+        int r = findSum(a, sum, tempsum, i + 1);
+        return l + r;
+    }
+
+    public static void main(String[] args) {
+        int a[] = {1, 1, 1};
+        int k = 2;
+        int m = findSum(a, k, 0, 0);
+        System.out.println(m);
+    }
+}

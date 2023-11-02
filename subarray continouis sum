@@ -1,0 +1,30 @@
+
+
+
+import java.util.*;
+public class Main {
+    public static int findSum(int a[], int tempsum,int k,int n) {
+    int  count=0;
+    int start=0;
+    
+    for(int i=0;i<n;i++){
+        tempsum+=a[i];
+        while(tempsum>k){
+            tempsum-=a[start];
+            start++;
+        }
+        
+        if(tempsum==k){
+            count++;
+        }
+    }
+    return count;
+    }
+
+    public static void main(String[] args) {
+        int a[] = {1, 1, 1};
+        int k = 2;
+        int m = findSum(a,0,k,a.length);
+        System.out.println(m);
+    }
+}

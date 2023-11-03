@@ -1,0 +1,25 @@
+import java.util.*;
+public class Main
+{
+    public static void find(int index,int a[],int target,List<List<Integer>>pi,List<Integer>ds){
+        if(index==a.length){
+            if(target==0){
+                pi.add(new ArrayList<>(ds));
+            }
+            return ;
+        }
+        if(a[index]<=target){
+            ds.add(a[index]);
+            find(index,a,target-a[index],pi,ds);
+            ds.remove(ds.size()-1);
+        }
+        find(index+1,a,target,pi,ds);
+    }
+	public static void main(String[] args) {
+	int a[]={1,1,1};
+	List<List<Integer>>pi=new ArrayList<>();
+	int target=2;
+	find(0,a,target,pi,new ArrayList<>());
+	System.out.println(pi);
+	}
+}
